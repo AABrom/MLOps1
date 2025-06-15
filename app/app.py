@@ -98,9 +98,11 @@ class FileHandler(FileSystemEventHandler):
         self.service = service
 
     def on_created(self, event):
+        print(f"on_created triggered")
         if not event.is_directory and event.src_path.endswith(".csv"):
-            logger.debug('New file detected: %s', event.src_path)
+            logger.info('New file detected: %s', event.src_path)
             self.service.process_single_file(event.src_path)
+        
 
 if __name__ == "__main__":
     logger.info('Starting ML scoring service...')
