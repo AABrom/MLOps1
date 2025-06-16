@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import logging
+from pathlib import Path
 
 # Import extra modules
 from sklearn.preprocessing import LabelEncoder
@@ -37,7 +38,8 @@ def add_cartesian_features(df):
 def load_train_data():
     """Load and preprocess training data"""
     logger.info('Loading training data...')
-    train = pd.read_csv('./train_data/train.csv').dropna()
+    train_path = Path('./train_data/train.csv')
+    train = pd.read_csv(train_path).dropna()
     
     # Initialize encoders
     encoders = {col: LabelEncoder() for col in CAT_COLS}

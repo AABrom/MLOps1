@@ -14,8 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Копирование исходного кода
 COPY . .
 
-# Точки монтирования
-VOLUME /app/input
-VOLUME /app/output
-
 CMD ["python", "./app/app.py"]

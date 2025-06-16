@@ -1,6 +1,7 @@
 import pandas as pd
 import logging
 import xgboost as xgb
+from pathlib import Path
 
 # Настройка логгера
 logger = logging.getLogger(__name__)
@@ -9,7 +10,8 @@ logger.info('Importing pretrained model...')
 
 # Import model
 model = xgb.XGBClassifier()
-model.load_model('./models/xgb.bin')
+model_path = Path('./models/xgb.bin')
+model.load_model(model_path)
 
 logger.info('Pretrained model imported successfully...')
 
